@@ -1,0 +1,41 @@
+{
+	"name": "stream-sync",
+	"version": "1.0.0",
+	"description": "Synchronous stream library. Includes FileReadStreamSync",
+	"main": "dist/main.js",
+	"types": "./dist/index.d.ts",
+	"files": [
+		"dist"
+	],
+	"directories": {
+		"test": "test"
+	},
+	"dependencies": {},
+	"devDependencies": {},
+	"scripts": {
+		"build": "tsc",
+		"test-lint": "eslint src --ext .js,.ts",
+		"test": "node test/test.js",
+		"prepublishOnly": "npm run build"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/comlog-gmbh/sync-stream.git"
+	},
+	"keywords": [
+		"syncronous",
+		"file",
+		"stream",
+		"buffer",
+		"string"
+	],
+	"author": "COMLOG GmbH",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/comlog-gmbh/stream-sync/issues"
+	},
+	"homepage": "https://github.com/comlog-gmbh/stream-sync#readme",
+	"engines": {
+		"node": ">= 6"
+	}
+}

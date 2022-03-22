@@ -12,7 +12,7 @@ Contains:
 npm install sync-stream
 ```
 
-## Examples
+## Usage
 ### Read file to String
 ```javascript
 const syncStream = require('sync-stream');

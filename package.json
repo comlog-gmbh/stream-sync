@@ -1,6 +1,6 @@
 {
 	"name": "stream-sync",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "Synchronous stream library. Includes FileReadStreamSync",
 	"main": "dist/main.js",
 	"types": "./dist/index.d.ts",

@@ -1,7 +1,10 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-const events_1 = require("events");
-class Writable extends events_1.EventEmitter {
+const stream_1 = __importDefault(require("stream"));
+class Writable extends stream_1.default.Writable {
     constructor(opts) {
         super();
         this.destroyed = true;
@@ -37,6 +40,7 @@ class Writable extends events_1.EventEmitter {
     }
     setDefaultEncoding(encoding) {
         this._writableState.encoding = encoding;
+        return this;
     }
 }
 exports.default = Writable;

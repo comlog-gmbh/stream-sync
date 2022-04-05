@@ -22,7 +22,7 @@ wstream2.on('close', function () {
 wstream2.write("Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.\n");
 wstream2.end();
 /**/
-
+/*
 // Write file stream
 const fs = require("fs");
 //let wstream = new syncStream.FileWriteStreamSync('test3.txt', {encoding: 'ascii'});
@@ -58,7 +58,7 @@ while ((row = rstream.readLine()) !== null) {
 }
 /**/
 
-/*
+
 // Read file stream
 let rstream = new syncStream.FileReadStreamSync('test.txt');
 let wstream = new syncStream.BufferWriteStreamSync();

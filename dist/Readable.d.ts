@@ -1,11 +1,12 @@
 /// <reference types="node" />
-import { EventEmitter } from "events";
 import ReadableOptions from "./ReadableOptions";
-declare class Readable extends EventEmitter {
+import stream from "stream";
+declare class Readable extends stream.Readable {
     destroyed: boolean;
     readable: boolean;
     _readableState: ReadableOptions;
     constructor(opts?: ReadableOptions);
+    setEncoding(encoding: BufferEncoding): this;
     _read(size: number, encoding?: BufferEncoding): void;
     push(chunk: any, encoding?: BufferEncoding): boolean;
     read(size?: number): string | Buffer | null;

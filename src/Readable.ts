@@ -1,4 +1,3 @@
-import {EventEmitter} from "events";
 import ReadableOptions from "./ReadableOptions";
 import stream from "stream";
 
@@ -17,6 +16,12 @@ class Readable extends stream.Readable {
 		this._readableState = Object.assign({}, this._readableState, opts || {});
 		this.destroyed = false;
 		this.readable = true;
+	}
+
+	setEncoding(encoding: BufferEncoding): this {
+		this._readableState.encoding = encoding;
+		try { super.setEncoding(encoding); } catch (e) {};
+		return this;
 	}
 
 	_read(size: number, encoding?: BufferEncoding) {
@@ -54,14 +59,7 @@ class Readable extends stream.Readable {
 	pipe<T extends NodeJS.WritableStream>(destination: T, options?: { end?: boolean | undefined }): T {
 		let buf: Buffer|string|null;
 		while ((buf = this.read()) !== null) {
-			if (this._readableState && this._readableState.encoding) {
-				// @ts-ignore
-				destination.write(buf, this._readableState.encoding);
-			}
-			else {
-				// @ts-ignore
-				destination.write(buf);
-			}
+			destination.write(buf);
 		}
 
 		return destination;

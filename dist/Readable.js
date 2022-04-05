@@ -1,7 +1,10 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-const events_1 = require("events");
-class Readable extends events_1.EventEmitter {
+const stream_1 = __importDefault(require("stream"));
+class Readable extends stream_1.default.Readable {
     constructor(opts) {
         super();
         this.destroyed = false;
@@ -15,6 +18,15 @@ class Readable extends events_1.EventEmitter {
         this._readableState = Object.assign({}, this._readableState, opts || {});
         this.destroyed = false;
         this.readable = true;
+    }
+    setEncoding(encoding) {
+        this._readableState.encoding = encoding;
+        try {
+            super.setEncoding(encoding);
+        }
+        catch (e) { }
+        ;
+        return this;
     }
     _read(size, encoding) {
         this.push(null, encoding);
@@ -48,14 +60,7 @@ class Readable extends events_1.EventEmitter {
     pipe(destination, options) {
         let buf;
         while ((buf = this.read()) !== null) {
-            if (this._readableState && this._readableState.encoding) {
-                // @ts-ignore
-                destination.write(buf, this._readableState.encoding);
-            }
-            else {
-                // @ts-ignore
-                destination.write(buf);
-            }
+            destination.write(buf);
         }
         return destination;
     }

@@ -1,4 +1,4 @@
-# sync-stream
+# stream-sync
 **Synchronous streams for NodeJS. Compatible with default node stream.**
 
 Contains:
@@ -9,13 +9,13 @@ Contains:
  
 ## Installation
 ```batch
-npm install sync-stream
+npm install stream-sync
 ```
 
 ## Usage
 ### Read file to String
 ```javascript
-const syncStream = require('sync-stream');
+const syncStream = require('stream-sync');
 let rstream = new syncStream.FileReadStreamSync('test.txt');
 let wstream = new syncStream.BufferWriteStreamSync({encoding: 'utf8'});
 rstream.pipe(wstream);
@@ -24,7 +24,7 @@ console.info(wstream.toString());
 
 ### Read file async to String
 ```javascript
-const syncStream = require('sync-stream');
+const syncStream = require('stream-sync');
 let rstream = fs.createReadStream('test.txt');
 let wstream = new syncStream.BufferWriteStreamSync({encoding: 'utf8'});
 rstream.pipe(wstream);
@@ -35,7 +35,7 @@ rstream.on('end', function () {
 
 ### Read file
 ```javascript
-const syncStream = require('sync-stream');
+const syncStream = require('stream-sync');
 let rstream = new syncStream.FileReadStreamSync('test.txt', {encoding: 'utf8'});
 var chunk = null;
 while ((chunk = rstream.read()) !== null) {
@@ -45,7 +45,7 @@ while ((chunk = rstream.read()) !== null) {
 
 ### Read-Line file
 ```javascript
-const syncStream = require('sync-stream');
+const syncStream = require('stream-sync');
 let rstream = new syncStream.FileReadStreamSync('test.txt', {encoding: 'utf8'});
 var line = null;
 while ((row = rstream.readLine()) !== null) {
@@ -55,7 +55,7 @@ while ((row = rstream.readLine()) !== null) {
 
 ### Copy file
 ```javascript
-const syncStream = require('sync-stream');
+const syncStream = require('stream-sync');
 let rstream = new syncStream.FileReadStreamSync('test.txt', {encoding: 'utf8'});
 let wstream = new syncStream.FileWriteStreamSync('test2.txt', {encoding: 'utf8'});
 rstream.pipe(wstream);

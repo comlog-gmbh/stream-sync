@@ -1,7 +1,8 @@
 import {EventEmitter} from 'events';
 import WritableOptions from './WritableOptions';
+import stream from "stream";
 
-class Writable extends EventEmitter {
+class Writable extends stream.Writable {
 	destroyed = true;
 	writable = false;
 	_writableState: WritableOptions = {
@@ -42,6 +43,7 @@ class Writable extends EventEmitter {
 
 	setDefaultEncoding(encoding: BufferEncoding) {
 		this._writableState.encoding = encoding;
+		return this;
 	}
 }
 

@@ -1,7 +1,8 @@
 import {EventEmitter} from "events";
 import ReadableOptions from "./ReadableOptions";
+import stream from "stream";
 
-class Readable extends EventEmitter {
+class Readable extends stream.Readable {
 	destroyed: boolean = false;
 	readable: boolean = false;
 	_readableState: ReadableOptions = {

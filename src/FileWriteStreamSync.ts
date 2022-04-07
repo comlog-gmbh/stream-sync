@@ -1,8 +1,8 @@
-import Writable from "./Writable";
-import * as fs from "fs";
+import {Writable} from "./Writable";
+import fs from "fs";
 import stream from "stream";
 
-interface Options extends stream.WritableOptions {
+export interface Options extends stream.WritableOptions {
 	flags : string; // See support of file system flags. Default: 'r'.
 	encoding?: BufferEncoding; // Default: undefined
 	mode: number; // Default: 0o666
@@ -17,7 +17,7 @@ const defaults = {
 	autoClose: true
 } as Options;
 
-class FileWriteStreamSync extends Writable {
+export class FileWriteStreamSync extends Writable {
 	fd?: number;
 	pos = 0;
 	size: number;
@@ -25,8 +25,8 @@ class FileWriteStreamSync extends Writable {
 	readable = false;
 	options = defaults;
 
-	constructor(filepath: string|fs.PathLike, options: Options) {
-		super(Object.assign({}, defaults, options));
+	constructor(filepath: string|fs.PathLike, options?: Options) {
+		super(Object.assign({}, defaults, (options || {})));
 		this.fd = fs.openSync(filepath, this.options.flags, this.options.mode);
 		let stat = fs.statSync(filepath);
 		this.size = stat.size;
@@ -49,5 +49,3 @@ class FileWriteStreamSync extends Writable {
 		//return super.write(chunk, callback);
 	}
 }
-
-export default FileWriteStreamSync;

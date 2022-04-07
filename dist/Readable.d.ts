@@ -1,7 +1,7 @@
 /// <reference types="node" />
-import ReadableOptions from "./ReadableOptions";
+import { ReadableOptions } from "./ReadableOptions";
 import stream from "stream";
-declare class Readable extends stream.Readable {
+export declare class Readable extends stream.Readable {
     destroyed: boolean;
     readable: boolean;
     _readableState: ReadableOptions;
@@ -16,4 +16,3 @@ declare class Readable extends stream.Readable {
     _destroy(): void;
     destroy(): this;
 }
-export default Readable;

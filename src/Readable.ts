@@ -1,7 +1,7 @@
-import ReadableOptions from "./ReadableOptions";
+import {ReadableOptions} from "./ReadableOptions";
 import stream from "stream";
 
-class Readable extends stream.Readable {
+export class Readable extends stream.Readable {
 	destroyed: boolean = false;
 	readable: boolean = false;
 	_readableState: ReadableOptions = {
@@ -75,5 +75,3 @@ class Readable extends stream.Readable {
 		return this;
 	}
 }
-
-export default Readable;

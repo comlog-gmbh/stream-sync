@@ -3,6 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.Writable = void 0;
 const stream_1 = __importDefault(require("stream"));
 class Writable extends stream_1.default.Writable {
     constructor(opts) {
@@ -43,5 +44,5 @@ class Writable extends stream_1.default.Writable {
         return this;
     }
 }
-exports.default = Writable;
+exports.Writable = Writable;
 //# sourceMappingURL=Writable.js.map

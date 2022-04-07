@@ -1,7 +1,7 @@
-import Readable from "./Readable";
-import ReadableOptions from "./ReadableOptions";
+import {Readable} from "./Readable";
+import {ReadableOptions} from "./ReadableOptions";
 
-class BufferReadStreamSync extends Readable {
+export class BufferReadStreamSync extends Readable {
 	private data : Buffer
 	destroyed = false;
 	readable = false;
@@ -51,5 +51,3 @@ class BufferReadStreamSync extends Readable {
 
 	toBuffer() { return this.data; }
 }
-
-export = BufferReadStreamSync;

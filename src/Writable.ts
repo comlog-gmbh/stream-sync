@@ -1,8 +1,7 @@
-import {EventEmitter} from 'events';
-import WritableOptions from './WritableOptions';
+import {WritableOptions} from './WritableOptions';
 import stream from "stream";
 
-class Writable extends stream.Writable {
+export class Writable extends stream.Writable {
 	destroyed = true;
 	writable = false;
 	_writableState: WritableOptions = {
@@ -46,5 +45,3 @@ class Writable extends stream.Writable {
 		return this;
 	}
 }
-
-export default Writable;

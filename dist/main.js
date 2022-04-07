@@ -1,19 +1,19 @@
 "use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __exportStar = (this && this.__exportStar) || function(m, exports) {
+    for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
 };
-const Readable_1 = __importDefault(require("./Readable"));
-const Writable_1 = __importDefault(require("./Writable"));
-const FileReadStreamSync_1 = __importDefault(require("./FileReadStreamSync"));
-const BufferReadStreamSync_1 = __importDefault(require("./BufferReadStreamSync"));
-const BufferWriteStreamSync_1 = __importDefault(require("./BufferWriteStreamSync"));
-const FileWriteStreamSync_1 = __importDefault(require("./FileWriteStreamSync"));
-module.exports = {
-    Readable: Readable_1.default,
-    FileReadStreamSync: FileReadStreamSync_1.default,
-    BufferReadStreamSync: BufferReadStreamSync_1.default,
-    Writable: Writable_1.default,
-    FileWriteStreamSync: FileWriteStreamSync_1.default,
-    BufferWriteStreamSync: BufferWriteStreamSync_1.default,
-};
+Object.defineProperty(exports, "__esModule", { value: true });
+__exportStar(require("./Readable"), exports);
+__exportStar(require("./Writable"), exports);
+__exportStar(require("./FileReadStreamSync"), exports);
+__exportStar(require("./BufferReadStreamSync"), exports);
+__exportStar(require("./BufferWriteStreamSync"), exports);
+__exportStar(require("./FileWriteStreamSync"), exports);
 //# sourceMappingURL=main.js.map

@@ -1,7 +1,7 @@
 /// <reference types="node" />
-import WritableOptions from './WritableOptions';
+import { WritableOptions } from './WritableOptions';
 import stream from "stream";
-declare class Writable extends stream.Writable {
+export declare class Writable extends stream.Writable {
     destroyed: boolean;
     writable: boolean;
     _writableState: WritableOptions;
@@ -12,4 +12,3 @@ declare class Writable extends stream.Writable {
     _write(chunk: any, encoding?: BufferEncoding): void;
     setDefaultEncoding(encoding: BufferEncoding): this;
 }
-export default Writable;

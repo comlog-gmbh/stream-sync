@@ -1,9 +1,8 @@
 "use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-const Readable_1 = __importDefault(require("./Readable"));
-class BufferReadStreamSync extends Readable_1.default {
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.BufferReadStreamSync = void 0;
+const Readable_1 = require("./Readable");
+class BufferReadStreamSync extends Readable_1.Readable {
     constructor(data, options) {
         super(options);
         this.destroyed = false;
@@ -50,5 +49,5 @@ class BufferReadStreamSync extends Readable_1.default {
     }
     toBuffer() { return this.data; }
 }
-module.exports = BufferReadStreamSync;
+exports.BufferReadStreamSync = BufferReadStreamSync;
 //# sourceMappingURL=BufferReadStreamSync.js.map

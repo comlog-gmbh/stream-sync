@@ -1,8 +1,8 @@
-import Readable from "./Readable";
-import * as fs from "fs";
-import ReadableOptions from "./ReadableOptions";
+import {Readable} from "./Readable";
+import fs from "fs";
+import {ReadableOptions} from "./ReadableOptions";
 
-interface FileReadableOptions extends ReadableOptions {
+export interface FileReadableOptions extends ReadableOptions {
 	flags? : string; // See support of file system flags. Default: 'r'.
 	encoding?: BufferEncoding; // Default: undefined
 	mode?: number; // Default: 0o666
@@ -13,7 +13,7 @@ const defaults = {
 	autoClose: true
 } as FileReadableOptions;
 
-class FileReadStreamSync extends Readable {
+export class FileReadStreamSync extends Readable {
 	fd?: number|null;
 	pos = 0;
 	size: number;
@@ -129,5 +129,3 @@ class FileReadStreamSync extends Readable {
 		return buf;
 	}
 }
-
-export default FileReadStreamSync;

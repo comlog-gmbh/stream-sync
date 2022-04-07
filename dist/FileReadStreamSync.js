@@ -1,34 +1,16 @@
 "use strict";
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
-    Object.defineProperty(o, "default", { enumerable: true, value: v });
-}) : function(o, v) {
-    o["default"] = v;
-});
-var __importStar = (this && this.__importStar) || function (mod) {
-    if (mod && mod.__esModule) return mod;
-    var result = {};
-    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
-    __setModuleDefault(result, mod);
-    return result;
-};
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const Readable_1 = __importDefault(require("./Readable"));
-const fs = __importStar(require("fs"));
+exports.FileReadStreamSync = void 0;
+const Readable_1 = require("./Readable");
+const fs_1 = __importDefault(require("fs"));
 const defaults = {
     encoding: undefined,
     autoClose: true
 };
-class FileReadStreamSync extends Readable_1.default {
+class FileReadStreamSync extends Readable_1.Readable {
     constructor(filepath, options) {
         super(Object.assign({}, defaults, options || {}));
         this.pos = 0;
@@ -43,8 +25,8 @@ class FileReadStreamSync extends Readable_1.default {
             if (options.mode)
                 this.mode = options.mode;
         }
-        this.fd = fs.openSync(filepath, this.flags, this.mode);
-        let stat = fs.statSync(filepath);
+        this.fd = fs_1.default.openSync(filepath, this.flags, this.mode);
+        let stat = fs_1.default.statSync(filepath);
         this.size = stat.size;
         this.readable = true;
     }
@@ -58,7 +40,7 @@ class FileReadStreamSync extends Readable_1.default {
     }
     _destroy() {
         if (this.fd)
-            fs.closeSync(this.fd);
+            fs_1.default.closeSync(this.fd);
         this.fd = null;
         super._destroy();
     }
@@ -92,7 +74,7 @@ class FileReadStreamSync extends Readable_1.default {
                 file_end = true;
                 continue;
             }
-            fs.readSync(this.fd, buf, { offset: 0, position: this.pos });
+            fs_1.default.readSync(this.fd, buf, { offset: 0, position: this.pos });
             this.pos += size;
             if (buf.indexOf(br) > -1) {
                 br_found = true;
@@ -125,7 +107,7 @@ class FileReadStreamSync extends Readable_1.default {
         if (this.pos + size > this.size)
             size = this.size - this.pos;
         let buf = Buffer.alloc(size);
-        let cnt = fs.readSync(this.fd, buf, { offset: 0, position: this.pos });
+        let cnt = fs_1.default.readSync(this.fd, buf, { offset: 0, position: this.pos });
         this.pos += cnt;
         buf = buf.slice(0, cnt);
         if (encoding)
@@ -134,5 +116,5 @@ class FileReadStreamSync extends Readable_1.default {
         return buf;
     }
 }
-exports.default = FileReadStreamSync;
+exports.FileReadStreamSync = FileReadStreamSync;
 //# sourceMappingURL=FileReadStreamSync.js.map

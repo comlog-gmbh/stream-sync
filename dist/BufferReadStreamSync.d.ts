@@ -1,7 +1,7 @@
 /// <reference types="node" />
-import Readable from "./Readable";
-import ReadableOptions from "./ReadableOptions";
-declare class BufferReadStreamSync extends Readable {
+import { Readable } from "./Readable";
+import { ReadableOptions } from "./ReadableOptions";
+export declare class BufferReadStreamSync extends Readable {
     private data;
     destroyed: boolean;
     readable: boolean;
@@ -12,4 +12,3 @@ declare class BufferReadStreamSync extends Readable {
     toString(encoding?: BufferEncoding | undefined, start?: number, end?: number): string;
     toBuffer(): Buffer;
 }
-export = BufferReadStreamSync;

@@ -1,13 +1,13 @@
 /// <reference types="node" />
-import Readable from "./Readable";
-import * as fs from "fs";
-import ReadableOptions from "./ReadableOptions";
-interface FileReadableOptions extends ReadableOptions {
+import { Readable } from "./Readable";
+import fs from "fs";
+import { ReadableOptions } from "./ReadableOptions";
+export interface FileReadableOptions extends ReadableOptions {
     flags?: string;
     encoding?: BufferEncoding;
     mode?: number;
 }
-declare class FileReadStreamSync extends Readable {
+export declare class FileReadStreamSync extends Readable {
     fd?: number | null;
     pos: number;
     size: number;
@@ -30,4 +30,3 @@ declare class FileReadStreamSync extends Readable {
      */
     _read(size?: number, encoding?: BufferEncoding): string | Buffer | null;
 }
-export default FileReadStreamSync;
